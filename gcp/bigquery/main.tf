@@ -19,5 +19,5 @@ resource "google_project_iam_member" "bigquery-connector" {
 resource "google_project_iam_binding" "write_acces" {
   project = "${var.project_id}"
   role = "roles/bigquery.dataEditor"
-  members = "${var.write_members}"
+  members = ["${compact(split(",",replace(var.write_members, " ","")))}"]
 }

@@ -1,13 +1,11 @@
 variable "writer_users" {
-  type = "list"
-  description = "a list of valid bucket writers"
-  default = []
+  description = "a csv list of valid bucket writers"
+  default = ""
 }
 
 variable "reader_users" {
-  type = "list"
-  description = "a list of valid bucket writers"
-  default = []
+  description = "a csv list of valid bucket writers"
+  default = ""
 }
 
 variable "project_id" {
