@@ -16,7 +16,14 @@ variable "project_number" {
   description = "the project number"
 }
 
-
 variable "name" {
   description = "the bucket name to create"
+}
+
+variable "team" {
+  description = "the team the bucket belongs to"
+}
+
+variable "env" {
+  default = "the environment"
 }
