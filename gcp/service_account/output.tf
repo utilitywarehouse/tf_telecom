@@ -2,12 +2,12 @@ output "email" {
   value = "${google_service_account.account.email}"
 }
 
-output "name" {
-  value = "${google_service_account.account.name}"
-}
-
 output "id" {
   value = "${google_service_account.account.id}"
+}
+
+output "iam_ref" {
+  value = "serviceAccount:${google_service_account.account.email}"
 }
 
 output "private_key" {
