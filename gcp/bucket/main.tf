@@ -1,6 +1,6 @@
 
 resource "google_storage_bucket" "bucket" {
-  name = "${var.name}"
+  name = "${format("uw-%s-%s-%s", replace(var.team, "/^uw-/", ""), var.name, var.env)}"
   location = "EU"
   project = "${var.project_id}"
 }
