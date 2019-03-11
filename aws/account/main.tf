@@ -1,8 +1,7 @@
 
 
 resource "aws_iam_user" "user" {
-  name = "${var.name}"
-  path = "${format("/%s/", replace(var.team, "/^uw-/", ""))}"
+  name = "${format("/%s/", replace(var.team, "/^uw-/", ""))}-${var.name}"
 }
 
 
