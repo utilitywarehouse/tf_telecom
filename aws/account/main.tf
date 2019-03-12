@@ -1,8 +1,12 @@
 
 
 resource "aws_iam_user" "user" {
-  name = "${var.name}"
-  path = "${format("/uw-%s/", replace(var.team, "/^uw-/", ""))}"
+  name = "${format("/%s/", replace(var.team, "/^uw-/", ""))}-${var.name}"
+  permissions_boundary = "arn:aws:iam::${var.account_id}:policy/sys-${format("/%s/", replace(var.team, "/^uw-/", ""))}-boundary"
+  tags {
+    team = "${format("/%s/", replace(var.team, "/^uw-/", ""))}"
+    terraform = "Managed by terraform"
+  }
 }
 
 
