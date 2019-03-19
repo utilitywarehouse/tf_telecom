@@ -75,7 +75,7 @@ data "aws_iam_policy_document" "access" {
 
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "${format("uw-%s-%s-%s", replace(var.team, "/^uw-/", ""), var.name, var.env)}"
+  bucket = "${replace(var.preformatted_bucket_name, "LEGACY_BUCKET", format("uw-%s-%s-%s", replace(var.team, "/^uw-/", ""), var.name, var.env))}"
   acl = "private"
   policy = "${data.aws_iam_policy_document.access.json}"
   tags {

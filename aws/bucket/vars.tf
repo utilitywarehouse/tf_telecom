@@ -24,3 +24,8 @@ variable "list_access" {
   default = ""
   description = "arns with list content access"
 }
+
+variable "preformatted_bucket_name" {
+  description = "the leagacy bucket name"
+  default = "LEGACY_BUCKET"
+}
