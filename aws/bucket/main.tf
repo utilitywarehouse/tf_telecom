@@ -1,5 +1,5 @@
 data "aws_iam_policy_document" "access" {
-  "statement" {
+  statement {
     effect = "Allow"
     sid = "ReadAccess"
     actions = [
@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "access" {
       type = "AWS"
     }
   }
-  "statement" {
+  statement {
     effect = "Allow"
     sid = "ListBucketContents"
     actions = [
@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "access" {
       type = "AWS"
     }
   }
-  "statement" {
+  statement {
     effect = "Allow"
     sid = "WriteAccess"
     actions = [
@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "access" {
       type = "AWS"
     }
   }
-  "statement" {
+  statement {
     effect = "Deny"
     sid = "DenyUnEncryptedObjectUploads"
     actions = [
