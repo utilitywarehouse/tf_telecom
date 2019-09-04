@@ -1,5 +1,5 @@
 output "account_email" {
-  value = "${google_service_account.bigquery-connector.email}"
+  value = google_service_account.bigquery-connector.email
 }
 
 output "readonly_role" {
@@ -9,3 +9,4 @@ output "readonly_role" {
 output "editor_role" {
   value = "roles/bigquery.dateEditor"
 }
+
