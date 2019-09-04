@@ -3,6 +3,7 @@ variable "project_id" {
 }
 
 variable "write_members" {
-  default = ""
+  default     = ""
   description = "list of members with write access"
 }
+

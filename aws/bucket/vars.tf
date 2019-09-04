@@ -12,15 +12,16 @@ variable "env" {
 
 variable "write_access" {
   description = "arns with write access"
-  default = ""
+  default     = ""
 }
 
 variable "read_access" {
-  default = ""
+  default     = ""
   description = "arns with read access"
 }
 
 variable "list_access" {
-  default = ""
+  default     = ""
   description = "arns with list content access"
 }
+

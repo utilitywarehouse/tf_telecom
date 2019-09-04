@@ -1,11 +1,11 @@
 variable "writer_users" {
   description = "a csv list of valid bucket writers"
-  default = ""
+  default     = ""
 }
 
 variable "reader_users" {
   description = "a csv list of valid bucket writers"
-  default = ""
+  default     = ""
 }
 
 variable "project_id" {
@@ -27,3 +27,4 @@ variable "team" {
 variable "env" {
   default = "the environment"
 }
+
