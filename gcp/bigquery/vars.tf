@@ -7,7 +7,7 @@ variable "write_members" {
   description = "list of members with write access"
 }
 
-variable "job_memebers" {
+variable "job_members" {
   default = ""
   description = "list of members with ability to run jobs"
 }
