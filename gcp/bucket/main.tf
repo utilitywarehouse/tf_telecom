@@ -10,8 +10,7 @@ resource "google_storage_bucket" "bucket" {
 
 resource "google_storage_bucket_acl" "acl" {
   bucket = google_storage_bucket.bucket.name
-  role_entity = [
-    compact(flatten(concat(
+  role_entity = compact(flatten(concat(
       tolist([format("OWNER:project-owners-%s", var.project_number)]),
       formatlist(
         "WRITER:user-%s",
@@ -21,7 +20,6 @@ resource "google_storage_bucket_acl" "acl" {
         "READER:user-%s",
         compact(split(",", replace(var.reader_users, " ", ""))),
       ),
-    ))),
-  ]
+    )))
 }
 
