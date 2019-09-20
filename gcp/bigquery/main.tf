@@ -18,3 +18,8 @@ resource "google_project_iam_binding" "write_acces" {
   members = compact(split(",", replace(var.write_members, " ", "")))
 }
 
+resource "google_project_iam_binding" "job_access" {
+  role = "roles/bigquery.jobUser"
+  members = compact(split(",", replace(var.job_members, " ", "")))
+}
+
