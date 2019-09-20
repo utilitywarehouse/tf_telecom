@@ -1,7 +1,6 @@
 resource "google_service_account" "account" {
   account_id   = var.name
   display_name = var.description
-  project      = var.project_id
 }
 
 resource "google_service_account_key" "account" {
