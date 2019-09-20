@@ -10,3 +10,7 @@ output "editor_role" {
   value = "roles/bigquery.dateEditor"
 }
 
+output "job_role" {
+  value = "roles/bigquery.jobUser"
+}
+
