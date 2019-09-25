@@ -12,3 +12,8 @@ variable "job_members" {
   description = "list of members with ability to run jobs"
 }
 
+variable "view_members" {
+  default = ""
+  description = "list of members with ability to view datasets and all of their contents"
+}
+

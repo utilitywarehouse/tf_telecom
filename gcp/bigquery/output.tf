@@ -13,4 +13,3 @@ output "editor_role" {
 output "job_role" {
   value = "roles/bigquery.jobUser"
 }
-

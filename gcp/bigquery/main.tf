@@ -23,3 +23,7 @@ resource "google_project_iam_binding" "job_access" {
   members = compact(split(",", replace(var.job_members, " ", "")))
 }
 
+resource "google_project_iam_binding" "view_access" {
+  role = "roles/bigquery.dataViewer"
+  members = compact(split(",", replace(var.view_members, " ", "")))
+}
