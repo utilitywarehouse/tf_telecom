@@ -15,5 +15,5 @@ output "job_role" {
 }
 
 output "job_get_create_role" {
-  value = "jobGetCreateRole"
+  value = "roles/bigquery.jobGetCreateRole"
 }

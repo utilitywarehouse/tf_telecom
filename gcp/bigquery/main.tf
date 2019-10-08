@@ -1,5 +1,5 @@
 resource "google_project_iam_custom_role" "job_get_create_access" {
-  role_id     = "jobGetCreateRole"
+  role_id     = "roles/bigquery.jobGetCreateRole"
   title       = "Role with jobs create & jobs get access"
   description = "Role with jobs create & jobs get access"
   permissions = ["bigquery.jobs.create", "bigquery.jobs.get"]
