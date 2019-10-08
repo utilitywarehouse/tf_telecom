@@ -12,8 +12,12 @@ variable "job_members" {
   description = "list of members with ability to run jobs"
 }
 
+variable "job_get_create_members" {
+  default = ""
+  description = "list of members with ability to create & get jobs"
+}
+
 variable "view_members" {
   default = ""
   description = "list of members with ability to view datasets and all of their contents"
 }
-
