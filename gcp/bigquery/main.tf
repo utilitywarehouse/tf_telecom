@@ -1,12 +1,12 @@
 resource "google_project_iam_custom_role" "job_get_create_access" {
-  role_id     = "bigquery.jobGetCreateRole"
+  role_id     = "bigquery.jobCreateGetRole"
   title       = "Role with jobs create & jobs get access"
   description = "Role with jobs create & jobs get access"
   permissions = ["bigquery.jobs.create", "bigquery.jobs.get"]
 }
 
 resource "google_project_iam_binding" "job_get_create_access" {
-  role = "projects/${var.project_id}/roles/bigquery.jobGetCreateRole"
+  role = "projects/${var.project_id}/roles/bigquery.jobCreateGetRole"
   members = compact(split(",", replace(var.job_get_create_members, " ", "")))
 }
 
