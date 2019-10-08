@@ -1,8 +1,13 @@
 resource "google_project_iam_custom_role" "job_get_create_access" {
-  role_id     = "roles/bigquery.jobGetCreateRole"
+  role_id     = "bigquery.jobGetCreateRole"
   title       = "Role with jobs create & jobs get access"
   description = "Role with jobs create & jobs get access"
   permissions = ["bigquery.jobs.create", "bigquery.jobs.get"]
+}
+
+resource "google_project_iam_binding" "job_get_create_access" {
+  role = "projects/${var.project_id}/roles/bigquery.jobGetCreateRole"
+  members = compact(split(",", replace(var.job_get_create_members, " ", "")))
 }
 
 resource "google_service_account" "bigquery-connector" {
@@ -28,11 +33,6 @@ resource "google_project_iam_binding" "write_access" {
 resource "google_project_iam_binding" "job_access" {
   role = "roles/bigquery.jobUser"
   members = compact(split(",", replace(var.job_members, " ", "")))
-}
-
-resource "google_project_iam_binding" "job_get_create_access" {
-  role = "jobGetCreateRole"
-  members = compact(split(",", replace(var.job_get_create_members, " ", "")))
 }
 
 resource "google_project_iam_binding" "view_access" {
