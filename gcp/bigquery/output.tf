@@ -13,3 +13,7 @@ output "editor_role" {
 output "job_role" {
   value = "roles/bigquery.jobUser"
 }
+
+output "job_get_create_role" {
+  value = "jobGetCreateRole"
+}
