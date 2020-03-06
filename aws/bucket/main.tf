@@ -122,9 +122,6 @@ resource "aws_s3_bucket" "bucket" {
       storage_class = "GLACIER"
       days = var.hot_retention
     }
-    tags {
-      rule = "cold_storage"
-    }
   }
 }
 
