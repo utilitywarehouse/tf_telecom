@@ -115,5 +115,17 @@ resource "aws_s3_bucket" "bucket" {
     terraform = "Managed by terraform"
     team      = var.team
   }
+
+  lifecycle_rule {
+    id = "cold_storage"
+    enabled = var.cold_storage_enabled
+    transition {
+      storage_class = "GLACIER"
+      days = var.hot_retention
+    }
+    tags {
+      rule: "cold_storage"
+    }
+  }
 }
 
