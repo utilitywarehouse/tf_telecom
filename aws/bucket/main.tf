@@ -115,9 +115,6 @@ resource "aws_s3_bucket" "bucket" {
     terraform = "Managed by terraform"
     team      = var.team
   }
-<<<<<<< Updated upstream
-=======
-
   lifecycle_rule {
     id = "cold_storage"
     enabled = var.cold_storage_enabled
@@ -129,6 +126,5 @@ resource "aws_s3_bucket" "bucket" {
       rule = "cold_storage"
     }
   }
->>>>>>> Stashed changes
 }
 
