@@ -7,4 +7,3 @@ resource "google_service_account_key" "account" {
   service_account_id = google_service_account.account.name
   public_key_type    = "TYPE_X509_PEM_FILE"
 }
-
