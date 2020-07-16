@@ -25,13 +25,7 @@ variable "list_access" {
   description = "arns with list content access"
 }
 
-variable "hot_retention" {
-  default = 7
-  description = "days to retain objects on s3 before being moved to cold storage"
+variable "versioning" {
+  default     = false
+  description = "should versioning be enabled"
 }
-
-variable "cold_storage_enabled" {
-  default = true
-  description = "flag to indicate if bucket will use cold storage for older objects"
-}
-

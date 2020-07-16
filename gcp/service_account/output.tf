@@ -13,4 +13,3 @@ output "iam_ref" {
 output "private_key" {
   value = google_service_account_key.account.private_key
 }
-

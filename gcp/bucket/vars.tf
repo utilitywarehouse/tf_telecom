@@ -27,4 +27,3 @@ variable "team" {
 variable "env" {
   default = "the environment"
 }
-
