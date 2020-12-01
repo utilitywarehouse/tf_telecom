@@ -29,33 +29,3 @@ variable "versioning" {
   default     = false
   description = "should versioning be enabled"
 }
-
-variable cors_allowed_headers {
-  default = []
-  type = list(string)
-  description = "a list of allowed headers for CORS"
-}
-
-variable cors_allowed_methods {
-  default = []
-  type = list(string)
-  description = "a list of allowed methods, ie. PUT GET"
-}
-
-variable "cors_allowed_origins" {
-  default = []
-  type = list(string)
-  description = "a list of allowed origins"
-}
-
-variable "cors_expose_headers" {
-  default = ["ETag"]
-  type = list(string)
-  description = "a list of exposed headers from the object"
-}
-
-variable "cors_max_age" {
-  default = 3000
-  type = number
-  description = "max age for cache instruction cors"
-}
