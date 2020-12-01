@@ -28,7 +28,7 @@ resource aws_iam_role_policy "vault" {
         var.env,
       )
   role = var.vault_role_id
-  policy = data.aws_iam_policy_document.vault
+  policy = data.aws_iam_policy_document.vault.json
 }
 
 resource "aws_s3_bucket" "bucket" {
