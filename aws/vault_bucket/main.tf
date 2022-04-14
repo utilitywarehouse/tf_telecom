@@ -38,12 +38,21 @@ resource "aws_s3_bucket" "bucket" {
     var.name,
     var.env,
   )
-  acl    = "private"
   tags = {
     terraform = "Managed by terraform"
     team      = var.team
   }
-  versioning {
-    enabled = var.versioning
+}
+
+
+resource "aws_s3_bucket_acl" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+  acl = "private"
+}
+
+resource "aws_s3_bucket_versioning" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+  versioning_configuration {
+    status = var.versioning
   }
 }

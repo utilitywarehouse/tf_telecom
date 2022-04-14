@@ -12,8 +12,8 @@ variable "env" {
 
 
 variable "versioning" {
-  default     = false
-  description = "should versioning be enabled"
+  default     = "Disabled"
+  description = "versioning status"
 }
 
 variable "vault_role_id" {

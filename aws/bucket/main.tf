@@ -109,12 +109,24 @@ resource "aws_s3_bucket" "bucket" {
     var.name,
     var.env,
   )
-  acl    = "private"
-  policy = data.aws_iam_policy_document.access.json
   tags = {
     terraform = "Managed by terraform"
     team      = var.team
   }
+}
+
+resource "aws_s3_bucket_policy" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+  policy = data.aws_iam_policy_document.access.json
+}
+
+resource "aws_s3_bucket_acl" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+  acl = "private"
+}
+
+resource "aws_s3_bucket_cors_configuration" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
   cors_rule {
     allowed_headers = var.cors_allowed_headers
     allowed_methods = var.cors_allowed_methods
@@ -122,7 +134,11 @@ resource "aws_s3_bucket" "bucket" {
     expose_headers = var.cors_expose_headers
     max_age_seconds = var.cors_max_age
   }
-  versioning {
-    enabled = var.versioning
+}
+
+resource "aws_s3_bucket_versioning" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+  versioning_configuration {
+    status = var.versioning
   }
 }

@@ -26,8 +26,8 @@ variable "list_access" {
 }
 
 variable "versioning" {
-  default     = false
-  description = "should versioning be enabled"
+  default     = "Disabled"
+  description = "versioning status"
 }
 
 variable cors_allowed_headers {
