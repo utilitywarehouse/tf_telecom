@@ -6,6 +6,7 @@ resource "google_project_iam_custom_role" "job_get_create_access" {
 }
 
 resource "google_project_iam_binding" "job_get_create_access" {
+  project = var.project_id
   role = "projects/${var.project_id}/roles/bigquery.jobCreateGetRole"
   members = compact(split(",", replace(var.job_get_create_members, " ", "")))
 }
@@ -21,21 +22,25 @@ resource "google_service_account_key" "bigquery-connector" {
 }
 
 resource "google_project_iam_member" "bigquery-connector" {
+  project = var.project_id
   role    = "roles/bigquery.dataOwner"
   member  = "serviceAccount:${google_service_account.bigquery-connector.email}"
 }
 
 resource "google_project_iam_binding" "write_access" {
+  project = var.project_id
   role    = "roles/bigquery.dataEditor"
   members = compact(split(",", replace(var.write_members, " ", "")))
 }
 
 resource "google_project_iam_binding" "job_access" {
+  project = var.project_id
   role = "roles/bigquery.jobUser"
   members = compact(split(",", replace(var.job_members, " ", "")))
 }
 
 resource "google_project_iam_binding" "view_access" {
+  project = var.project_id
   role = "roles/bigquery.dataViewer"
   members = compact(split(",", replace(var.view_members, " ", "")))
 }
