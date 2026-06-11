@@ -112,6 +112,7 @@ resource "aws_s3_bucket_acl" "bucket" {
 }
 
 resource "aws_s3_bucket_cors_configuration" "bucket" {
+  count  = var.create_cors_config ? 1 : 0
   bucket = aws_s3_bucket.bucket.id
   cors_rule {
     allowed_headers = var.cors_allowed_headers
