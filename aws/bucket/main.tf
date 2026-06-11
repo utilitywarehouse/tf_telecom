@@ -1,3 +1,12 @@
+locals {
+  bucket_name = format(
+    "uw-%s-%s-%s",
+    replace(var.team, "/^uw-/", ""),
+    var.name,
+    var.env,
+  )
+}
+
 data "aws_iam_policy_document" "access" {
   statement {
     effect = "Allow"
@@ -6,12 +15,7 @@ data "aws_iam_policy_document" "access" {
       "s3:GetObject",
     ]
     resources = [
-      "arn:aws:s3:::${format(
-        "uw-%s-%s-%s",
-        replace(var.team, "/^uw-/", ""),
-        var.name,
-        var.env,
-      )}/*",
+      "arn:aws:s3:::${local.bucket_name}/*",
     ]
     principals {
       identifiers = compact(
@@ -32,12 +36,8 @@ data "aws_iam_policy_document" "access" {
       "s3:GetBucketLocation",
     ]
     resources = [
-      "arn:aws:s3:::${format(
-        "uw-%s-%s-%s",
-        replace(var.team, "/^uw-/", ""),
-        var.name,
-        var.env,
-      )}",
+      "arn:aws:s3:::${local.bucket_name}",
+
     ]
     principals {
       identifiers = compact(
@@ -60,12 +60,7 @@ data "aws_iam_policy_document" "access" {
       "s3:AbortMultipartUpload",
     ]
     resources = [
-      "arn:aws:s3:::${format(
-        "uw-%s-%s-%s",
-        replace(var.team, "/^uw-/", ""),
-        var.name,
-        var.env,
-      )}/*",
+      "arn:aws:s3:::${local.bucket_name}/*",
     ]
     principals {
       identifiers = compact(split(",", replace(var.write_access, " ", "")))
@@ -79,12 +74,7 @@ data "aws_iam_policy_document" "access" {
       "s3:PutObject",
     ]
     resources = [
-      "arn:aws:s3:::${format(
-        "uw-%s-%s-%s",
-        replace(var.team, "/^uw-/", ""),
-        var.name,
-        var.env,
-      )}/*",
+      "arn:aws:s3:::${local.bucket_name}/*",
     ]
     principals {
       identifiers = [
@@ -103,15 +93,11 @@ data "aws_iam_policy_document" "access" {
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = format(
-    "uw-%s-%s-%s",
-    replace(var.team, "/^uw-/", ""),
-    var.name,
-    var.env,
-  )
+  bucket = local.bucket_name
   tags = {
     terraform = "Managed by terraform"
     team      = var.team
+    Name = local.bucket_name
   }
 }
 
