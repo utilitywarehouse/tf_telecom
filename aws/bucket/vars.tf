@@ -30,6 +30,12 @@ variable "versioning" {
   description = "versioning status"
 }
 
+variable "create_cors_config" {
+  default     = false
+  type        = bool
+  description = "whether to create a CORS configuration for the bucket"
+}
+
 variable cors_allowed_headers {
   default = []
   type = list(string)
